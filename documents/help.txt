@@ -1,0 +1,45 @@
+Telepíteni:
+	-Ninite JDK 8 JDK x64 8 Java 8 Installer.exe
+		-> itt nincs mit gondolkodni telepítés közben
+	-Eclipse (https://www.eclipse.org/downloads/download.php?file=/oomph/epp/oxygen/R/eclipse-inst-win64.exe&mirror_id=1260)
+		-> itt sincs
+	-Valami git kliens (én most Sourcetree-t fogok használni: https://downloads.atlassian.com/software/sourcetree/windows/ga/SourceTreeSetup-2.3.1.0.exe?_ga=2.26729021.1452862831.1505931818-1265349250.1505931818)
+		-> itt be kell jelentkezni, meg rögtön meg lehet adni a repositoryt, annak az URL-je: https://github.com/csuvikv/dasCsapat
+	
+
+Ezután le kell pull-olni, ami bent van a repo-ban. Eclpise-t elindítani, workspace-t kiválasztani (mindegy hol van). Welcome page bezár.
+File -> Import -> General -> Existing Projects into Workspace -> Next
+Select root directory - ide megy a git-es project mappa (nálam: C:\Users\csuvikv\Documents\git\dasCsapat\project)
+Option: Search for nested projects - pipa
+Finish
+
+Itt még lesz gond, ezért:
+Window -> Server -> Runtime Environments -> Add
+Innen kiválasztani, hogy Apache Tomcat v9.0
++ Create a new local server - pipa
+Next -> Browse
+itt a git-es external mappából kell kikeresni a tomcat-et (nálam: C:\Users\csuvikv\Documents\git\dasCsapat\external\tomcat)
+Finish
+
+Ezután elvileg működni fog, amit ajánlok még beállítani:
+Window -> General -> General -> Use external web browser -> Apply and close
+Windows -> Show View -> Servers (utána én ezt át szoktam húzni balra a projekt alá)
+Jobb klikk a projektre -> Properties -> Resource -> Text file encoding - other -> UTF-8 -> Apply and close
+
+Futtatáshoz:
+Jobb klikk a projektre -> Run as -> Run on Server
+Always use this server whn running this project - pipa
+Finish
+
+Ekkor elindul a szerver, és elvileg megnyílik a böngésző, de hibát fog dobni. Az alap alkalmazás a http://localhost:8080/dasCsapat/Main címen érhető el.
+
+Java servletekről nagyvonalakban: a megjelenítésért alapvetően a jsp-k felelősek (WebContent/View/Main.jsp), ezeket meg lehet írni sima HTML-ben, de lehet írni beléjük Java kódot, és különböző jelölő cuccokat is. Minden jsp-hez tartozik egy Java osztály (src/hu/szte/rf1/das/csapat/Main.java). Itt adjuk meg hogy ez melyik URL-nél töltődjön be (mondjuk et még a web.xml-ben is lehet módosítani). Amikor megadjuk az URL-t, végrehajtódik a doGet (vagy doPost) metódus, ebben csinálhatunk akármit. Aztán átadjuk a vezérlést a jsp-nek (nyilván paramétereket is adhatunk át). A jsp ezután megjeleníti amit akarunk. Amúgy asszem a jsp is Java kódra fordul. De ebbe lehet írni mindent (css, js, html, el, jstl, java...).
+
+A projekt felépítése nagyvonalakban:
+	-WebContent/View: itt vannak a frontendes dolgok
+	-WebContent/WEB-INF: hivatkozott jar-ok (ezek vannak a classpath-ben is) + web.xml - ezzel sok mindent le lehet írni hogy mi hogy viselkedjen, de nem ismerem pontosan, utána kell nézni
+	-src:
+		-hu.szte.rf1.das.csapat.Model: model osztályok helye (java beanek, adatbázis kapcsolat)
+		-hu.szte.rf1.das.csapat.Controller: üzleti logika (a frontend csak vele fog kommunikálni, a model-ről nem is kell tudnia)
+		
+Kb ennyi. Ha valamelyik fájl módosul, azt elmentitek, és a server automatikusan publikálja (frissíti).

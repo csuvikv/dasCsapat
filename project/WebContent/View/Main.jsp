@@ -11,10 +11,10 @@
 Ez pure html
 
 <% 
-	// ez meg tiszta java, a mond·s az, hogy az iln be·gyazott blokkokat ker¸lj¸k
-	// hogy "szebb" legyen a kÛd, ink·bb speci·lis jstl (vagy el) tag-eket kellene haszn·lni.. (ls. lent)
+	// ez meg tiszta java, a mond√°s az, hogy az iln be√°gyazott blokkokat ker√ºlj√ºk
+	// hogy "szebb" legyen a k√≥d, ink√°bb speci√°lis jstl (vagy el) tag-eket kellene haszn√°lni.. (ls. lent)
 	
-	// a request objektum automatikusan lÈtrejˆn:
+	// a request objektum automatikusan l√©trej√∂n:
 	String eztkapom = (String)request.getAttribute("egyediAzonosito"); 
 %>
  
@@ -25,13 +25,13 @@ Ez pure html
 	<ol>
 		<li>valami</li>
 		<li><%= eztkapom %></li>
-		<% eztkapom = "valami m·s"; %>
+		<% eztkapom = "valami m√°s"; %>
 		<li><%= eztkapom %></li>
 	</ol>
 	
 	<br/>
 	JSTL:
-	(meg lehetne csin·lni hagyom·nyos java-s for-ral is, de Ìgy szebb..)
+	(meg lehetne csin√°lni hagyom√°nyos java-s for-ral is, de √≠gy szebb..)
 	<br/>
 	
 	
