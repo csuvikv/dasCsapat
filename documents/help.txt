@@ -1,8 +1,8 @@
-Telepíteni:
+﻿Telepíteni:
 	-Ninite JDK 8 JDK x64 8 Java 8 Installer.exe
 		-> itt nincs mit gondolkodni telepítés közben
 	-Eclipse (https://www.eclipse.org/downloads/download.php?file=/oomph/epp/oxygen/R/eclipse-inst-win64.exe&mirror_id=1260)
-		-> itt sincs
+		-> Eclipse IDE for Java EE Developers-t kellene telepíteni
 	-Valami git kliens (én most Sourcetree-t fogok használni: https://downloads.atlassian.com/software/sourcetree/windows/ga/SourceTreeSetup-2.3.1.0.exe?_ga=2.26729021.1452862831.1505931818-1265349250.1505931818)
 		-> itt be kell jelentkezni, meg rögtön meg lehet adni a repositoryt, annak az URL-je: https://github.com/csuvikv/dasCsapat
 	
