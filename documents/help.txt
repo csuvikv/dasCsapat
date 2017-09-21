@@ -9,7 +9,7 @@
 
 Ezután le kell pull-olni, ami bent van a repo-ban. Eclpise-t elindítani, workspace-t kiválasztani (mindegy hol van). Welcome page bezár.
 File -> Import -> General -> Existing Projects into Workspace -> Next
-Select root directory - ide megy a git-es project mappa (nálam: C:\Users\csuvikv\Documents\git\dasCsapat\project)
+Select root directory -> Browse - ide megy a git-es project mappa (nálam: C:\Users\csuvikv\Documents\git\dasCsapat\project)
 Options: Search for nested projects - pipa
 Finish
 
@@ -22,7 +22,7 @@ itt a git-es external mappából kell kikeresni a tomcat-et (nálam: C:\Users\cs
 Finish
 
 Ezután elvileg működni fog, amit ajánlok még beállítani:
-Window -> General -> General -> Use external web browser -> Apply and close
+Window -> Preferences > General -> Use external web browser -> Apply and close
 Windows -> Show View -> Servers (utána én ezt át szoktam húzni balra a projekt alá)
 Jobb klikk a projektre -> Properties -> Resource -> Text file encoding - other -> UTF-8 -> Apply and close
 
