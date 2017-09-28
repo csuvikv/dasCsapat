@@ -51,3 +51,7 @@ A projekt felépítése nagyvonalakban:
 		-hu.szte.rf1.das.csapat.Controller: üzleti logika (a frontend csak vele fog kommunikálni, a model-ről nem is kell tudnia)		
 
 Kb ennyi. Ha valamelyik fájl módosul, azt elmentitek, és a server automatikusan publikálja (frissíti).
+
+=============================DB========================================
+E fájl 16. sorát írjátok át a saját útvonalatokra, még nem találtam megoldást arra, hogy ne kelljen átírni.
+src\hu\szte\rf1\das\csapat\model\VidaCsardaDAOImpl.java
