@@ -52,6 +52,7 @@ A projekt felépítése nagyvonalakban:
 
 Kb ennyi. Ha valamelyik fájl módosul, azt elmentitek, és a server automatikusan publikálja (frissíti).
 
-=============================DB========================================
-E fájl 16. sorát írjátok át a saját útvonalatokra, még nem találtam megoldást arra, hogy ne kelljen átírni.
-src\hu\szte\rf1\das\csapat\model\VidaCsardaDAOImpl.java
+========================================DB========================================
+Hogy a db működjön:
+Run -> Run Configurations... -> (x)= Arguments (ez egy fül) -> Working Directory (csoport) -> Other (rádiógomb kijelöl) -> Workspace...
+Utána Apply, és elvileg kész (nekem az other mellet mezőbe ezt írta be: ${workspace_loc:dasCsapat})
