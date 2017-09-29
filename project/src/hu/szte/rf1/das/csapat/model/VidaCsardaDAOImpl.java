@@ -1,5 +1,6 @@
 package hu.szte.rf1.das.csapat.model;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,7 +14,8 @@ import hu.szte.rf1.das.csapat.model.bean.BullShit;
 
 public class VidaCsardaDAOImpl implements VidaCsardaDAO {
 
-	private static final String DATABASE_FILE = "d:\\h644771\\Documents\\5szemeszter\\rf1\\repo\\repo1\\dasCsapat\\external\\db\\VidaCsarda.db";
+	private static File dbFile = new File(".");
+	private static final String DATABASE_FILE = getParentDirPath(getParentDirPath(dbFile.getAbsolutePath())) + "\\external\\db\\VidaCsarda.db";
 	
 	public VidaCsardaDAOImpl() {
 		try {
@@ -70,4 +72,9 @@ public class VidaCsardaDAOImpl implements VidaCsardaDAO {
 		return bullShitList;
 	}
 	
+	public static String getParentDirPath(String fileOrDirPath) {
+		boolean endsWithSlash = fileOrDirPath.endsWith(File.separator);
+		return fileOrDirPath.substring(0, fileOrDirPath.lastIndexOf(File.separatorChar, 
+	            endsWithSlash ? fileOrDirPath.length() - 2 : fileOrDirPath.length() - 1));
+	}
 }
