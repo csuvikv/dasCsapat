@@ -2,11 +2,11 @@ package hu.szte.rf1.das.csapat.model;
 
 import java.util.List;
 
-import hu.szte.rf1.das.csapat.model.bean.BullShit;
+import hu.szte.rf1.das.csapat.model.bean.Pizza;
 
 public interface VidaCsardaDAO {
 	
-	public boolean addBullShit(BullShit bullShit);
-	public List<BullShit> listBullShit();
+	boolean addPizza(Pizza pizza);
+	List<Pizza> listPizza();
 	
 }

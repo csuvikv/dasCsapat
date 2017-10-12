@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hu.szte.rf1.das.csapat.controller.VidaCsardaController;
-import hu.szte.rf1.das.csapat.model.bean.BullShit;
+import hu.szte.rf1.das.csapat.model.bean.Pizza;
 
 
 // Ezt az URL-t kell megadni, hogy ez az osztály fusson le
@@ -32,26 +32,28 @@ public class Main extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	
 		//Feltöltöm az adatbázist adatokkal
-		BullShit temp = new BullShit();
-		temp.setBull(i);
-		temp.setShit("Shit" + i++);
-		c.addBullShit(temp);
+		Pizza temp = new Pizza();
+		
+		temp.setName("FINOMPIZZA" + i);
+		temp.setCost(848 + i);
+		temp.setSize(50);
+		temp.readIngredientsFromDataBase("Alma, Narancs, Banan");
+		
+		i++;
+		
+		c.addPizza(temp);
 		
 		// ----------------------------------------------------- //
 		// Adat beállítása:
 		request.setAttribute("egyediAzonosito", new String("valamilyen objektum"));
 		
-		List<String> bullshitLista = new ArrayList<>();
-	/*	bullshitLista.add("bullshit1");
-		bullshitLista.add("bullshit1");
-		request.setAttribute("bullshitLista", bullshitLista);
-	*/
+		List<String> pizzaList = new ArrayList<>();
 		//Lekérem az adatokat
-		for (BullShit b : c.listBullShit()) {
-			bullshitLista.add(b.getBull() + " " + b.getShit());
+		for (Pizza p : c.listPizza()) {
+			pizzaList.add(p.toString());
 		}
 		
-		request.setAttribute("bullshitLista", bullshitLista);
+		request.setAttribute("pizzaList", pizzaList);
 		
 		// Átpasszolom a vezérlést a Main.jsp-nek (bármi másnak is lehet)
 		request.getRequestDispatcher("/View/Main.jsp").forward(request, response);

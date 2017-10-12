@@ -35,12 +35,12 @@ Ez pure html
 	<br/>
 	
 	
-	<c:forEach items = "${bullshitLista}" var = "valtozo">
+	<c:forEach items = "${pizzaList}" var = "valtozo">
 		<c:out value="${valtozo}"/><br/>
 	</c:forEach>
 	
 	<br/>
 	
-	<c:out value="${bullshitLista}"></c:out>
+	<c:out value="${pizzaList}"></c:out>
 </body>
 </html>

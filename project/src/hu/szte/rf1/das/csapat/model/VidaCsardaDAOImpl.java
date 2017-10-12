@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import hu.szte.rf1.das.csapat.model.bean.BullShit;
+import hu.szte.rf1.das.csapat.model.bean.Pizza;
 
 public class VidaCsardaDAOImpl implements VidaCsardaDAO {
 
@@ -27,15 +27,18 @@ public class VidaCsardaDAOImpl implements VidaCsardaDAO {
 	}
 	
 	@Override
-	public boolean addBullShit(BullShit bullShit) {
+	public boolean addPizza(Pizza pizza) {
 		boolean rvS = false;
 		try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_FILE);
-				PreparedStatement pst = conn.prepareStatement("INSERT INTO BullShit (Bull, Shit) VALUES(?,?)");
+				PreparedStatement pst = conn.prepareStatement("INSERT INTO Pizza(name, cost, size, ingredients) VALUES(?,?,?,?)");
 					){
 			int index = 1;
-			pst.setInt(index++, bullShit.getBull());
-			pst.setString(index++, bullShit.getShit());
-		
+			
+			pst.setString(index++, pizza.getName());
+			pst.setInt(index++, pizza.getCost());
+			pst.setInt(index++, pizza.getSize());
+			pst.setString(index++, pizza.saveIngredientsToDatabase());			
+			
 			rvS = pst.executeUpdate() == 1 ? true : false;
 		
 		} catch (SQLException e) {
@@ -48,19 +51,23 @@ public class VidaCsardaDAOImpl implements VidaCsardaDAO {
 	}
 	
 	@Override
-	public List<BullShit> listBullShit() {
-		List<BullShit> bullShitList = new ArrayList<BullShit>();
+	public List<Pizza> listPizza() {
+		List<Pizza> pizzaList = new ArrayList<Pizza>();
 		
 		try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_FILE);
 				Statement st = conn.createStatement();) {
-			ResultSet rs = st.executeQuery("SELECT * FROM BullShit");
+			ResultSet rs = st.executeQuery("SELECT * FROM Pizza");
 			
 			while (rs.next()) {
-				BullShit bS = new BullShit();
-				bS.setBull(rs.getInt("Bull"));
-				bS.setShit(rs.getString("Shit"));
+				Pizza p = new Pizza();
 				
-				bullShitList.add(bS);
+				p.setId(rs.getInt("id"));
+				p.setName(rs.getString("name"));
+				p.setSize(rs.getInt("size"));
+				p.setCost(rs.getInt("cost"));
+				p.readIngredientsFromDataBase(rs.getString("ingredients"));
+				
+				pizzaList.add(p);
 			}
 		}
 		
@@ -69,7 +76,7 @@ public class VidaCsardaDAOImpl implements VidaCsardaDAO {
 			e.printStackTrace();
 		}
 		
-		return bullShitList;
+		return pizzaList;
 	}
 	
 	public static String getParentDirPath(String fileOrDirPath) {

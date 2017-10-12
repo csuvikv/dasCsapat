@@ -4,18 +4,18 @@ import java.util.List;
 
 import hu.szte.rf1.das.csapat.model.VidaCsardaDAO;
 import hu.szte.rf1.das.csapat.model.VidaCsardaDAOImpl;
-import hu.szte.rf1.das.csapat.model.bean.BullShit;
+import hu.szte.rf1.das.csapat.model.bean.Pizza;
 
 public class VidaCsardaController {
 	
 	private VidaCsardaDAO db = new VidaCsardaDAOImpl();
 
-	public boolean addBullShit(BullShit bullShit) {		
-		return db.addBullShit(bullShit);
+	public boolean addPizza(Pizza pizza) {		
+		return db.addPizza(pizza);
 	}
 	
-	public List<BullShit> listBullShit() {
-		return db.listBullShit();
+	public List<Pizza> listPizza() {
+		return db.listPizza();
 	}
 
 }
